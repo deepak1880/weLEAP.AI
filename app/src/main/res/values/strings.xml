@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">weLEAP.AI</string>
+    <string name="app_intro">India’s 1st AI Driven Equity Portfolio Development Platform</string>
+    <string name="explanation">Unleash the power of AI for Developing an Equity Portfolio with Machine-Augmented Intelligence</string>
+    <string name="built_portfolio">Let’s Built Your Portfolio</string>
+    <string name="sign_up">Sign up</string>
+    <string name="signup_welcome_message">Invest Smarter, Grow Faster</string>
+    <string name="email_placeholder">youremail@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="password_placeholder">m#P52s@ap$V</string>
+    <string name="login">Login</string>
+    <string name="please_wait">Please wait…</string>
+
+
+</resources>
