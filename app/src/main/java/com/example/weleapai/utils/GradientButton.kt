@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.weleapai.ui.theme.DarkBlue
 import com.example.weleapai.ui.theme.Purple
 import com.example.weleapai.ui.theme.Shapes
 import com.example.weleapai.ui.theme.Transparent
@@ -37,8 +38,8 @@ fun GradientButton(
             .background(
                 brush = Brush.linearGradient(
                     listOf(
-                        Purple,
-                        Purple
+                        DarkBlue,
+                        DarkBlue
                     )
                 ),
             ),

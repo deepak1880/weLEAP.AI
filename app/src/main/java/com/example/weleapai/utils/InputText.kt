@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -28,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weleapai.ui.theme.Black
+import com.example.weleapai.ui.theme.DarkBlue
 import com.example.weleapai.ui.theme.ErrorColor
 import com.example.weleapai.ui.theme.Shapes
 import com.example.weleapai.ui.theme.Transparent
@@ -49,7 +51,7 @@ fun InputText(
     val color = if (isError) {
         ErrorColor
     } else {
-        Black
+        DarkBlue
     }
     Column(
         modifier = Modifier
@@ -58,7 +60,9 @@ fun InputText(
     ) {
         Text(
             text = label,
-            fontSize = 18.sp
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Normal,
+            color = Black
         )
         TextField(
             modifier = Modifier
@@ -85,7 +89,7 @@ fun InputText(
                 keyboardType = keyboardType
             ),
             placeholder = {
-                Text(text = placeholder, color = Black)
+                Text(text = placeholder, color = DarkBlue)
             },
             leadingIcon = {
                 Icon(imageVector = icon, contentDescription = label, tint = color)

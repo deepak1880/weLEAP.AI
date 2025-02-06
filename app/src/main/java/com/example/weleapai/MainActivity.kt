@@ -3,21 +3,15 @@ package com.example.weleapai
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.weleapai.features.onboarding.presentation.OnboardingScreen
-import com.example.weleapai.features.onboarding.presentation.SignUpScreen
-import com.example.weleapai.ui.theme.WeLEAPAITheme
+import com.example.weleapai.features.auth.presentation.login.LoginScreen
+import com.example.weleapai.features.auth.presentation.onboarding.OnboardingScreen
+import com.example.weleapai.features.auth.presentation.signup.SignUpScreen
+import com.example.weleapai.features.home.presentation.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +30,8 @@ fun MainNavGraph(navController: NavHostController) {
     ) {
         composable("onboardingScreen") { OnboardingScreen(navController) }
         composable("signup") { SignUpScreen(navController) }
-        composable("login") { OnboardingScreen(navController) }
+        composable("login") { LoginScreen(onLoginSuccess = {navController.navigate("homeScreen")}, onSignUpClick = {navController.navigate("signup")}) }
+        composable("homeScreen") { HomeScreen(navController) }
 
     }
 }

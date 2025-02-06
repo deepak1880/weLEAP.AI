@@ -11,6 +11,13 @@
     <string name="password_placeholder">m#P52s@ap$V</string>
     <string name="login">Login</string>
     <string name="please_wait">Please wait…</string>
-
+    <string name="login_welcome_message">Welcome back to TMDB. Have a good time</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="do_not_have_an_account">Don\'t have an account?</string>
+    <string name="user_name">Enter your user name</string>
+    <string name="sign_up_message">Only Invest one way ,the</string>
+    <string name="sign_up_message2">Sign up and get started on your investment journey today</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="login_message">Now Login with you email id and password.</string>
 
 </resources>
