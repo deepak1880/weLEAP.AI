@@ -1,4 +1,4 @@
-package com.example.weleapai.utils
+package com.example.weleapai.core.utils
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

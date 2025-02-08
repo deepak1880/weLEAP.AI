@@ -9,7 +9,7 @@ lifecycleRuntimeKtx = "2.8.5"
 activityCompose = "1.9.3"
 composeBom = "2024.04.01"
 coil = "2.4.0"
-composeNavigation = "2.8.0-alpha08"
+composeNavigation = "2.8.6"
 serialization = "1.6.3"
 navigationRuntimeKtx = "2.8.5"
 

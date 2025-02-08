@@ -1,4 +1,4 @@
-package com.example.weleapai.utils
+package com.example.weleapai.core.utils
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weleapai.ui.theme.DarkBlue
-import com.example.weleapai.ui.theme.Purple
 import com.example.weleapai.ui.theme.Shapes
 import com.example.weleapai.ui.theme.Transparent
 

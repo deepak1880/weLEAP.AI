@@ -8,10 +8,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.weleapai.core.bottomNav.BottomNavigationContainer
 import com.example.weleapai.features.auth.presentation.login.LoginScreen
 import com.example.weleapai.features.auth.presentation.onboarding.OnboardingScreen
 import com.example.weleapai.features.auth.presentation.signup.SignUpScreen
-import com.example.weleapai.features.home.presentation.HomeScreen
+import com.example.weleapai.core.utils.Screen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +27,19 @@ class MainActivity : ComponentActivity() {
 fun MainNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = "onboardingScreen"
+        startDestination = Screen.Onboarding.route
     ) {
-        composable("onboardingScreen") { OnboardingScreen(navController) }
-        composable("signup") { SignUpScreen(navController) }
-        composable("login") { LoginScreen(onLoginSuccess = {navController.navigate("homeScreen")}, onSignUpClick = {navController.navigate("signup")}) }
-        composable("homeScreen") { HomeScreen(navController) }
-
+        composable(Screen.Onboarding.route) { OnboardingScreen(navController) }
+        composable(Screen.SignUp.route) { SignUpScreen(navController) }
+        composable(Screen.Login.route) {
+            LoginScreen(
+                onLoginSuccess = { navController.navigate(Screen.Home.route) },
+                onSignUpClick = { navController.navigate(Screen.SignUp.route) }
+            )
+        }
+        composable(Screen.Home.route) {
+            BottomNavigationContainer(navController)
+        }
     }
 }
+

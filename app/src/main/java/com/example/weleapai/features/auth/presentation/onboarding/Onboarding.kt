@@ -27,7 +27,7 @@ import com.example.weleapai.R
 import com.example.weleapai.ui.theme.Black
 import com.example.weleapai.ui.theme.DarkBlue
 import com.example.weleapai.ui.theme.spacing
-import com.example.weleapai.utils.GradientButton
+import com.example.weleapai.core.utils.GradientButton
 
 @Composable
 fun OnboardingScreen(controller: NavHostController) {

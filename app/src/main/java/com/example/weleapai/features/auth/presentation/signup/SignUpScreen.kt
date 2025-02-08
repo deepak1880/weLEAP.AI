@@ -44,9 +44,9 @@ import com.example.weleapai.ui.theme.DarkBlue
 import com.example.weleapai.ui.theme.LightBlue
 import com.example.weleapai.ui.theme.White
 import com.example.weleapai.ui.theme.spacing
-import com.example.weleapai.utils.DialogContent
-import com.example.weleapai.utils.GradientButton
-import com.example.weleapai.utils.InputText
+import com.example.weleapai.core.utils.DialogContent
+import com.example.weleapai.core.utils.GradientButton
+import com.example.weleapai.core.utils.InputText
 
 @Composable
 fun SignUpScreen(
