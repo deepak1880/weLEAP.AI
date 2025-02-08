@@ -12,6 +12,7 @@ coil = "2.4.0"
 composeNavigation = "2.8.6"
 serialization = "1.6.3"
 navigationRuntimeKtx = "2.8.5"
+uiTestAndroid = "1.7.2"
 
 
 [libraries]
@@ -34,6 +35,7 @@ coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+androidx-ui-test-android = { group = "androidx.compose.ui", name = "ui-test-android", version.ref = "uiTestAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
