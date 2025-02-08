@@ -20,6 +20,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -38,8 +39,12 @@ import com.example.weleapai.ui.theme.White
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import com.example.weleapai.R
+import com.example.weleapai.ui.theme.Black
 import com.example.weleapai.ui.theme.DarkBlue
 import com.example.weleapai.ui.theme.LightBlue
+import com.example.weleapai.ui.theme.SignupText
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +56,6 @@ fun BottomNavigationContainer(
     val bottomNavController = rememberNavController()
 
     ModalDrawer(
-        // Changed to ModalDrawer to customize drawer size
         drawerContent = {
             Box(
                 modifier = Modifier
@@ -79,17 +83,22 @@ fun BottomNavigationContainer(
                     },
                     navigationIcon = {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                            Icon(Icons.Default.Menu, contentDescription = "Open Drawer")
+                            Icon(painter = painterResource(R.drawable.ic_menu), contentDescription = "Open Drawer")
                         }
                     },
                     actions = {
                         IconButton(onClick = { /* Handle search action */ }) {
-                            Icon(Icons.Default.Search, contentDescription = "Search")
+                            Icon(painter = painterResource(R.drawable.ic_search), contentDescription = "Search")
                         }
                         IconButton(onClick = { /* Handle notifications */ }) {
-                            Icon(Icons.Default.Notifications, contentDescription = "Notifications")
+                            Icon(painter = painterResource(R.drawable.ic_bell), contentDescription = "Notifications")
                         }
-                    }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = White,
+                        titleContentColor = Black
+                    )
+
                 )
             },
             bottomBar = { BottomNavigationBar(bottomNavController) },
@@ -106,6 +115,7 @@ fun BottomNavigationContainer(
         }
     }
 }
+
 
 @Preview
 @Composable

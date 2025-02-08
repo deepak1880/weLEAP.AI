@@ -35,7 +35,7 @@ fun OnboardingScreen(controller: NavHostController) {
     val subtitle = stringResource(R.string.explanation)
     val buttonText = stringResource(R.string.built_portfolio)
     val appIntro = stringResource(R.string.app_intro)
-    val launchImage: Int = R.drawable.bc
+    val launchImage: Int = R.drawable.ic_lauch
     val onClick = { controller.navigate("login") }
 
     Box(

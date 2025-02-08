@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 fun MainNavGraph(
     navController: NavHostController,
     drawerState: DrawerState,
-    scope: CoroutineScope
+    scope: CoroutineScope,
 ) {
     NavHost(
         navController = navController,
