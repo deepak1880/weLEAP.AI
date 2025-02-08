@@ -11,6 +11,7 @@ import com.example.weleapai.features.home.presentation.HomeScreen
 import com.example.weleapai.features.mutualfund.presentation.MutualFundScreen
 import com.example.weleapai.features.profile.presentation.ProfileScreen
 import com.example.weleapai.core.utils.Screen
+import com.example.weleapai.features.portfolio.presentation.PortFolioScreen
 import com.example.weleapai.ui.theme.White
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -27,8 +28,11 @@ fun BottomNavigationContainer(navController: NavHostController) {
             startDestination = Screen.Home.route
         ) {
             composable(Screen.Home.route) { HomeScreen(bottomNavController) }
-            composable(Screen.Events.route) { MutualFundScreen() }
+            composable(Screen.MutualFund.route) { MutualFundScreen() }
             composable(Screen.Profile.route) { ProfileScreen() }
+            composable(Screen.Analytics.route) { ProfileScreen() }
+            composable(Screen.Portfolio.route) { PortFolioScreen() }
+
         }
     }
 }
