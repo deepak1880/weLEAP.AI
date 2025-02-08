@@ -36,7 +36,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.weleapai.R
 import com.example.weleapai.ui.theme.Black
 import com.example.weleapai.ui.theme.DarkBlue
@@ -157,7 +156,7 @@ fun LoginScreen(
 
                 GradientButton(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = { onLoginSuccess }
+                    onClick = { onLoginSuccess ()}
                 ) {
                     Text(text = stringResource(R.string.login))
                 }

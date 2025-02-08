@@ -54,6 +54,8 @@ fun SignUpScreen(
 ) {
     var showDialog by remember { mutableStateOf(false) }
     val onLoginClick = { controller.navigate("login") }
+    val onSignUpClick = { controller.navigate("homeScreen") }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -158,7 +160,7 @@ fun SignUpScreen(
                     isPassword = true
                 )
 
-                GradientButton(modifier = Modifier.fillMaxWidth(), onClick = { }) {
+                GradientButton(modifier = Modifier.fillMaxWidth(), onClick = {onSignUpClick() }) {
                     Text(text = stringResource(R.string.sign_up))
                 }
                 Row(
@@ -173,7 +175,7 @@ fun SignUpScreen(
                     )
                     Text(
                         modifier = Modifier.clickable {
-                            onLoginClick
+                            onLoginClick()
                         },
                         text = stringResource(R.string.login),
                         color = DarkBlue,
