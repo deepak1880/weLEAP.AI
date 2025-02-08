@@ -16,6 +16,8 @@ val Black = Color(0xFF0A0101)
 val DarkBlue=Color(0xFF4169E1)
 val LightBlue=Color(0xFFe2f3fd)
 val SignupText=Color(0xFF3758B4)
+val Gray=Color(0xFF7F7F7F
+)
 
 
 

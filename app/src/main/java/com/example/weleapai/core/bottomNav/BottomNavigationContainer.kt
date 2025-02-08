@@ -11,6 +11,7 @@ import com.example.weleapai.features.home.presentation.HomeScreen
 import com.example.weleapai.features.mutualfund.presentation.MutualFundScreen
 import com.example.weleapai.features.profile.presentation.ProfileScreen
 import com.example.weleapai.core.utils.Screen
+import com.example.weleapai.ui.theme.White
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -18,7 +19,8 @@ fun BottomNavigationContainer(navController: NavHostController) {
     val bottomNavController = rememberNavController()
 
     Scaffold(
-        bottomBar = { BottomNavigationBar(bottomNavController) }
+        containerColor = White,
+        bottomBar = { BottomNavigationBar(bottomNavController) },
     ) {
         NavHost(
             navController = bottomNavController,
