@@ -17,15 +17,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Article
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Brush
 import androidx.compose.material.icons.filled.Handshake
+import androidx.compose.material.icons.filled.PieChart
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.ShowChart
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -55,8 +59,11 @@ fun HomeScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 100.dp, start = 16.dp, end = 16.dp)
+            .verticalScroll(rememberScrollState())
+            .padding(top = 50.dp, start = 16.dp, end = 16.dp, bottom = 50.dp)
     ) {
+        Spacer(modifier = Modifier.height(50.dp))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -125,7 +132,7 @@ fun HomeScreen(navController: NavHostController) {
                         imageVector = Icons.Default.ShowChart,
                         contentDescription = "Chart",
                         modifier = Modifier.size(60.dp),
-                        tint = Color.Black
+                        tint = DarkBlue
                     )
                 }
 
@@ -178,7 +185,7 @@ fun HomeScreen(navController: NavHostController) {
                         imageVector = Icons.Default.BarChart,
                         contentDescription = "FII Chart",
                         modifier = Modifier.size(60.dp),
-                        tint = Color.Black
+                        tint = DarkBlue
                     )
                 }
             }
@@ -210,7 +217,7 @@ fun HomeScreen(navController: NavHostController) {
                             .shadow(3.dp, CircleShape)
                             .background(White, shape = CircleShape)
                             .padding(8.dp),
-                    contentAlignment = Alignment.Center
+                        contentAlignment = Alignment.Center
                     ) {
                         Icon(
                             imageVector = icon,
@@ -225,9 +232,9 @@ fun HomeScreen(navController: NavHostController) {
                         textAlign = TextAlign.Center,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.width(80.dp)
-                            .padding(top = 5.dp)
-                        ,
+                        modifier = Modifier
+                            .width(80.dp)
+                            .padding(top = 5.dp),
                         lineHeight = 13.sp,
                         fontWeight = FontWeight.Normal,
                         color = Color.Black
@@ -235,11 +242,56 @@ fun HomeScreen(navController: NavHostController) {
                 }
             }
         }
+
+        Text(
+            modifier = Modifier.padding(top = 15.dp, start = 10.dp),
+            text = "Smart Investment Feature",
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 18.sp
+        )
+
+        val features = listOf(
+            Feature(
+                title = "AI-Powered Recommendations",
+                description = "Our advanced AI analyzes market trends to suggest optimal investment options based on your preferences.",
+                icon = Icons.Default.BarChart
+            ), Feature(
+                title = "Risk Assessment",
+                description = "Customize your risk tolerance and let our system design a portfolio that matches your comfort level.",
+                icon = Icons.Default.Shield
+            ), Feature(
+                title = "Sector Allocation",
+                description = "Diversify your investments across sectors like Metal, Pharma, FMCG, and Oil with personalized allocation.",
+                icon = Icons.Default.PieChart
+            ), Feature(
+                title = "Performance Tracking",
+                description = "Monitor your portfolio's performance with intuitive visualizations and real-time updates.",
+                icon = Icons.Default.ShowChart
+            )
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 5.dp)
+        ) {
+            features.forEach { feature ->
+                FeatureCard(feature = feature)
+                Spacer(modifier = Modifier.height(2.dp))
+            }
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        InvestmentJourneyScreen()
+
+        Spacer(modifier = Modifier.height(10.dp))
+
     }
 
 }
 
-@Preview
+@Preview()
 @Composable
 private fun PreviewHomeScreen() {
     HomeScreen(NavHostController(LocalContext.current))
