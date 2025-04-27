@@ -19,6 +19,7 @@ import com.example.weleapai.features.auth.presentation.login.LoginScreen
 import com.example.weleapai.features.auth.presentation.onboarding.OnboardingScreen
 import com.example.weleapai.features.auth.presentation.signup.SignUpScreen
 import com.example.weleapai.core.utils.Screen
+import com.example.weleapai.features.portfolioSelectionProcess.presentation.PersonalDetailsScreen
 import kotlinx.coroutines.CoroutineScope
 
 class MainActivity : ComponentActivity() {
@@ -59,6 +60,9 @@ fun MainNavGraph(
         }
         composable(Screen.Home.route) {
             BottomNavigationContainer(navController, drawerState, scope)
+        }
+        composable(Screen.PersonalDetails.route) {
+            PersonalDetailsScreen(navController)
         }
     }
 }

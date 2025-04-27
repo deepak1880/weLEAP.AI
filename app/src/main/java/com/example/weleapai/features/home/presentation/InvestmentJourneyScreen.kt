@@ -24,9 +24,12 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
+import com.example.weleapai.core.utils.Screen
 
 @Composable
-fun InvestmentJourneyScreen() {
+fun InvestmentJourneyScreen(navController: NavHostController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,7 +39,6 @@ fun InvestmentJourneyScreen() {
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            // Top curved strip
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -45,7 +47,6 @@ fun InvestmentJourneyScreen() {
                     .background(DarkBlue)
             )
 
-            // Main content
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -73,7 +74,9 @@ fun InvestmentJourneyScreen() {
                 )
 
                 Button(
-                    onClick = { /* Handle Get Started click */ },
+                    onClick = {
+                        navController.navigate(Screen.PersonalDetails.route)
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = DarkBlue),
                     shape = RoundedCornerShape(8.dp),
                     modifier = Modifier
@@ -96,5 +99,5 @@ fun InvestmentJourneyScreen() {
 @Preview()
 @Composable
 private fun PreviewInvestmentJourneyScreen() {
-    InvestmentJourneyScreen()
+    InvestmentJourneyScreen(NavHostController(LocalContext.current))
 }

@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -56,240 +57,235 @@ import com.example.weleapai.ui.theme.White
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    Column(
+    val icons = listOf(
+        Pair(Icons.Default.Brush, "Indices"),
+        Pair(Icons.Default.Search, "Trending\nStocks"),
+        Pair(Icons.Default.Article, "News &\nUpdates"),
+        Pair(Icons.Default.Handshake, "Deals"),
+        Pair(Icons.Default.Brush, "Indices"),
+        Pair(Icons.Default.Search, "Trending\nStocks"),
+    )
+
+    val features = listOf(
+        Feature(
+            title = "AI-Powered Recommendations",
+            description = "Our advanced AI analyzes market trends to suggest optimal investment options based on your preferences.",
+            icon = Icons.Default.BarChart
+        ),
+        Feature(
+            title = "Risk Assessment",
+            description = "Customize your risk tolerance and let our system design a portfolio that matches your comfort level.",
+            icon = Icons.Default.Shield
+        ),
+        Feature(
+            title = "Sector Allocation",
+            description = "Diversify your investments across sectors like Metal, Pharma, FMCG, and Oil with personalized allocation.",
+            icon = Icons.Default.PieChart
+        ),
+        Feature(
+            title = "Performance Tracking",
+            description = "Monitor your portfolio's performance with intuitive visualizations and real-time updates.",
+            icon = Icons.Default.ShowChart
+        )
+    )
+
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(top = 50.dp, start = 16.dp, end = 16.dp, bottom = 50.dp)
+            .padding(top = 50.dp, start = 16.dp, end = 16.dp, bottom = 50.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
+        item {
+            Spacer(modifier = Modifier.height(50.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = "Indices",
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp
+                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable { /* Handle click */ }
+                ) {
+                    Text(
+                        text = "View All",
+                        color = DarkBlue,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp
+                    )
+                    Icon(
+                        imageVector = Icons.Default.ArrowForward,
+                        contentDescription = "Arrow",
+                        tint = DarkBlue
+                    )
+                }
+            }
+        }
+
+        item {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(3.dp),
+                shape = RoundedCornerShape(10.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.White)
+            ) {
+                Column(modifier = Modifier.padding(20.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column {
+                            Text(
+                                text = "NIFTY",
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 16.sp,
+                                lineHeight = 20.sp,
+                                color = Color.Black,
+                            )
+                            Text(
+                                text = "23,559.95 (-43.40)",
+                                color = Color.Red,
+                                fontSize = 16.sp,
+                                lineHeight = 25.sp,
+                            )
+                            Text(
+                                text = "07 Feb 2025",
+                                fontSize = 14.sp,
+                                color = Color.Gray
+                            )
+                        }
+
+                        Icon(
+                            imageVector = Icons.Default.ShowChart,
+                            contentDescription = "Chart",
+                            modifier = Modifier.size(60.dp),
+                            tint = DarkBlue
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Canvas(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
+                            .offset(y = (-4).dp)
+                    ) {
+                        drawLine(
+                            color = Color.Gray,
+                            start = Offset(0f, 0f),
+                            end = Offset(size.width, 0f),
+                            strokeWidth = 2f,
+                            pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
+                        )
+                    }
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column {
+                            Text(
+                                text = "SENSEX",
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 16.sp,
+                                lineHeight = 20.sp,
+                                color = Color.Black,
+                            )
+                            Text(
+                                text = "-470.39 Cr.",
+                                color = Color.Red,
+                                fontSize = 16.sp,
+                                lineHeight = 25.sp
+                            )
+                            Text(
+                                text = "07 Feb 2025",
+                                fontSize = 14.sp,
+                                color = Color.Gray
+                            )
+                        }
+
+                        Icon(
+                            imageVector = Icons.Default.BarChart,
+                            contentDescription = "FII Chart",
+                            modifier = Modifier.size(60.dp),
+                            tint = DarkBlue
+                        )
+                    }
+                }
+            }
+        }
+
+        item {
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                items(icons) { (icon, title) ->
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.clickable { /* Handle Click */ }
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(70.dp)
+                                .shadow(3.dp, CircleShape)
+                                .background(White, shape = CircleShape)
+                                .padding(8.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = icon,
+                                contentDescription = title,
+                                modifier = Modifier.size(35.dp),
+                                tint = DarkBlue
+                            )
+                        }
+                        Text(
+                            text = title,
+                            fontSize = 12.sp,
+                            textAlign = TextAlign.Center,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier
+                                .width(80.dp)
+                                .padding(top = 5.dp),
+                            lineHeight = 13.sp,
+                            fontWeight = FontWeight.Normal,
+                            color = Color.Black
+                        )
+                    }
+                }
+            }
+        }
+
+        item {
             Text(
-                text = "Indices",
+                modifier = Modifier.padding(top = 15.dp, start = 10.dp),
+                text = "Smart Investment Feature",
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 18.sp
             )
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.clickable { /* Handle click */ }
-            ) {
-                Text(
-                    text = "View All",
-                    color = DarkBlue,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
-                )
-                Icon(
-                    imageVector = Icons.Default.ArrowForward,
-                    contentDescription = "Arrow",
-                    tint = DarkBlue
-                )
-            }
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
-
-
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(3.dp),
-            shape = RoundedCornerShape(10.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White)
-        ) {
-            Column(modifier = Modifier.padding(20.dp)) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column {
-                        Text(
-                            text = "NIFTY",
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 16.sp,
-                            lineHeight = 20.sp,
-                            color = Color.Black,
-                        )
-                        Text(
-                            text = "23,559.95 (-43.40)",
-                            color = Color.Red,
-                            fontSize = 16.sp,
-                            lineHeight = 25.sp,
-                        )
-                        Text(
-                            text = "07 Feb 2025",
-                            fontSize = 14.sp,
-                            color = Color.Gray
-                        )
-                    }
-
-                    Icon(
-                        imageVector = Icons.Default.ShowChart,
-                        contentDescription = "Chart",
-                        modifier = Modifier.size(60.dp),
-                        tint = DarkBlue
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-                Canvas(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .offset(y = (-4).dp)
-                ) {
-                    drawLine(
-                        color = Color.Gray,
-                        start = Offset(0f, 0f),
-                        end = Offset(size.width, 0f),
-                        strokeWidth = 2f,
-                        pathEffect = PathEffect.dashPathEffect(
-                            floatArrayOf(10f, 10f),
-                            0f
-                        )
-                    )
-                }
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column {
-                        Text(
-                            text = "SENSEX",
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 16.sp,
-                            lineHeight = 20.sp,
-                            color = Color.Black,
-                        )
-                        Text(
-                            text = "-470.39 Cr.",
-                            color = Color.Red,
-                            fontSize = 16.sp,
-                            lineHeight = 25.sp
-                        )
-                        Text(
-                            text = "07 Feb 2025",
-                            fontSize = 14.sp,
-                            color = Color.Gray
-                        )
-                    }
-
-                    Icon(
-                        imageVector = Icons.Default.BarChart,
-                        contentDescription = "FII Chart",
-                        modifier = Modifier.size(60.dp),
-                        tint = DarkBlue
-                    )
-                }
-            }
+        items(features) { feature ->
+            FeatureCard(feature = feature)
+            Spacer(modifier = Modifier.height(2.dp))
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        val icons = listOf(
-            Pair(Icons.Default.Brush, "Indices"),
-            Pair(Icons.Default.Search, "Trending\nStocks"),
-            Pair(Icons.Default.Article, "News &\nUpdates"),
-            Pair(Icons.Default.Handshake, "Deals"),
-            Pair(Icons.Default.Brush, "Indices"),
-            Pair(Icons.Default.Search, "Trending\nStocks"),
-        )
-
-        LazyRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-            items(icons) { (icon, title) ->
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.clickable { /* Handle Click */ }
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(70.dp)
-                            .shadow(3.dp, CircleShape)
-                            .background(White, shape = CircleShape)
-                            .padding(8.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            imageVector = icon,
-                            contentDescription = title,
-                            modifier = Modifier.size(35.dp),
-                            tint = DarkBlue
-                        )
-                    }
-                    Text(
-                        text = title,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Center,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier
-                            .width(80.dp)
-                            .padding(top = 5.dp),
-                        lineHeight = 13.sp,
-                        fontWeight = FontWeight.Normal,
-                        color = Color.Black
-                    )
-                }
-            }
+        item {
+            InvestmentJourneyScreen(navController)
         }
-
-        Text(
-            modifier = Modifier.padding(top = 15.dp, start = 10.dp),
-            text = "Smart Investment Feature",
-            style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 18.sp
-        )
-
-        val features = listOf(
-            Feature(
-                title = "AI-Powered Recommendations",
-                description = "Our advanced AI analyzes market trends to suggest optimal investment options based on your preferences.",
-                icon = Icons.Default.BarChart
-            ), Feature(
-                title = "Risk Assessment",
-                description = "Customize your risk tolerance and let our system design a portfolio that matches your comfort level.",
-                icon = Icons.Default.Shield
-            ), Feature(
-                title = "Sector Allocation",
-                description = "Diversify your investments across sectors like Metal, Pharma, FMCG, and Oil with personalized allocation.",
-                icon = Icons.Default.PieChart
-            ), Feature(
-                title = "Performance Tracking",
-                description = "Monitor your portfolio's performance with intuitive visualizations and real-time updates.",
-                icon = Icons.Default.ShowChart
-            )
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 5.dp)
-        ) {
-            features.forEach { feature ->
-                FeatureCard(feature = feature)
-                Spacer(modifier = Modifier.height(2.dp))
-            }
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-
-        InvestmentJourneyScreen()
-
-        Spacer(modifier = Modifier.height(10.dp))
-
     }
-
 }
+
 
 @Preview()
 @Composable
